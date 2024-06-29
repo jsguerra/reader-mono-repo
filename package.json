@@ -1,0 +1,15 @@
+{
+  "name": "reader-mono-repo",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
