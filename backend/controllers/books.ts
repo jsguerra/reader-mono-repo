@@ -1,22 +1,20 @@
 import { Request, Response } from "express";
+import { Prisma, PrismaClient } from '@prisma/client';
 
-// Create One book
+const prisma = new PrismaClient();
+
+// Create book
 
 // Get all Books
-const getBooks = (req: Request, res: Response) => {
-  res.status(200).json({
-    books: [
-      {
-        title: "hello world!!!",
-      },
-    ],
-  });
+const getBooks = async (req: Request, res: Response) => {
+  const books = await prisma.book.findMany();
+  res.status(200).json(books);
 };
 
-// Get One Book
+// Get Book
 
-// Update One Book
+// Update Book
 
-// Delete One Book
+// Delete Book
 
 export { getBooks };

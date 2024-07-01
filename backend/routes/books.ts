@@ -10,7 +10,7 @@ bookRoutes.post("/books");
 bookRoutes.get("/books", getBooks);
 
 // Get One Book
-bookRoutes.get("/book/:bookId");
+bookRoutes.get("/books/:bookId");
 
 // Update One Book
 bookRoutes.put("/books/:bookId");
