@@ -1,9 +1,11 @@
+import path from 'path';
 import express from 'express';
 import { bookRoutes } from './routes/books';
 
 const app = express();
 
 app.use(express.json());
+app.use('/', express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
