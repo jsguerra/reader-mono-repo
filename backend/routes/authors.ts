@@ -1,19 +1,19 @@
 import { Router } from "express";
 import { getAuthors } from "../controllers/authors";
 
-export const bookRoutes = Router();
+export const authorRoutes = Router();
 
 // Create One book
-bookRoutes.post("/authors");
+authorRoutes.post("/authors");
 
 // Get all authors
-bookRoutes.get("/authors", getAuthors);
+authorRoutes.get("/authors", getAuthors);
 
 // Get One Book
-bookRoutes.get("/authors/:bookId");
+authorRoutes.get("/authors/:bookId");
 
 // Update One Book
-bookRoutes.put("/authors/:bookId");
+authorRoutes.put("/authors/:bookId");
 
 // Delete One Book
-bookRoutes.delete("/authors:bookId");
+authorRoutes.delete("/authors:bookId");

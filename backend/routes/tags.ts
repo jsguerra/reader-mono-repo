@@ -1,19 +1,25 @@
 import { Router } from "express";
-import { getTags } from "../controllers/tags";
+import {
+  getAllTags,
+  createTag,
+  getTag,
+  updateTag,
+  deleteTag,
+} from "../controllers/tags";
 
-export const bookRoutes = Router();
+export const tagRoutes = Router();
 
-// Create One book
-bookRoutes.post("/tags");
+// Create Tag
+tagRoutes.post("/tags", createTag);
 
 // Get all tags
-bookRoutes.get("/tags", getTags);
+tagRoutes.get("/tags", getAllTags);
 
-// Get One Book
-bookRoutes.get("/tags/:bookId");
+// Get Tag
+tagRoutes.get("/tags/:id", getTag);
 
-// Update One Book
-bookRoutes.put("/tags/:bookId");
+// Update Tag
+tagRoutes.put("/tags/:id", updateTag);
 
-// Delete One Book
-bookRoutes.delete("/tags:bookId");
+// Delete Tag
+tagRoutes.delete("/tags/:id", deleteTag);
