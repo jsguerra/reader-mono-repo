@@ -5,7 +5,7 @@ import prisma from "../util/prisma";
 const getAllTags = async (req: Request, res: Response) => {
   try {
     const tags = await prisma.tag.findMany();
-    res.status(200).json({ message: "displaying tags", tags });
+    res.status(200).json({ message: "displaying tags", tags: tags });
   } catch (error) {
     console.error(error);
   }
@@ -23,7 +23,7 @@ const createTag = async (req: Request, res: Response) => {
       },
     });
 
-    res.status(201).json({ message: "Tag successfully created!", tag });
+    res.status(201).json({ message: "Tag successfully created!", tag: tag });
   } catch (error) {
     console.error(error);
   }
@@ -38,7 +38,7 @@ const getTag = async (req: Request, res: Response) => {
       include: { books: true },
     });
 
-    res.status(200).json({ message: "displaying tag", tag });
+    res.status(200).json({ message: "displaying tag", tag: tag });
   } catch (error) {
     console.error(error);
   }
@@ -60,7 +60,7 @@ const updateTag = async (req: Request, res: Response) => {
       },
     });
 
-    res.status(204).json({ message: "Tag has been updated", tag });
+    res.status(200).json({ message: "Tag has been updated", tag: tag });
   } catch (error) {
     console.log(error);
   }
@@ -76,7 +76,7 @@ const deleteTag = async (req: Request, res: Response) => {
       },
     });
 
-    res.status(204).json({ message: "Tag has been deleted", tag });
+    res.status(200).json({ message: "Tag has been deleted", tag: tag });
   } catch (error) {
     console.error(error);
   }
