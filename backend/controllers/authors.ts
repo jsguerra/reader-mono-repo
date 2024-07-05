@@ -11,7 +11,6 @@ const getAuthors = async (req: Request, res: Response) => {
 const createAuthor = async (req: Request, res: Response) => {
   const { name, slug, thumbnail, books } = req.body;
 
-  // Image destination = /books/a/author/thumbnail
   try {
     const author = await prisma.author.create({
       data: {
