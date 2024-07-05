@@ -6,7 +6,8 @@
   "license": "ISC",
   "description": "",
   "scripts": {
-    "dev": "npm run dev --workspace=backend"
+    "dev-back": "npm run dev --workspace=backend",
+    "dev-front": "npm run dev --workspace=frontend"
   },
   "workspaces": [
     "backend",
