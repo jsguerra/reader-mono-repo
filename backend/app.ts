@@ -40,8 +40,16 @@ const fileStorage = multer({
       cb: DestinationCallback
     ) => {
       let bookSlug = req.body.title.toLowerCase();
-      let authorSlug = req.body.name.toLowerCase();
+      let authorSlug = "default";
+      if (bookSlug) {
+        authorSlug = req.body.author.toLowerCase();
+      } else {
+        authorSlug = req.body.name.toLowerCase();
+      }
+
       let authorSlugLetter = authorSlug.slice(0, 1);
+      // Image destination = /books/a/author/book/
+      // or destination = /books/a/author/
       const destination = bookSlug
         ? `public/books/${authorSlugLetter}/${authorSlug}/${bookSlug}`
         : `public/books/${authorSlugLetter}/${authorSlug}`;
@@ -58,11 +66,11 @@ const fileStorage = multer({
       cb: DestinationCallback
     ) => cb(null, file.originalname),
   }),
-  fileFilter: fileFilter
+  fileFilter: fileFilter,
 });
 
 app.use(express.json());
-app.use(fileStorage.array('fileUpload'));
+app.use(fileStorage.array("fileUpload"));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
