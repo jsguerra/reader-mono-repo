@@ -1,6 +1,6 @@
 ---
 import Layout from "@layout/Layout.astro";
-import type { Book } from "../types/types.ts";
+import type { Book } from "@common/common";
 
 const response = await fetch("http://localhost:8080/books");
 const books = await response.json();
@@ -8,9 +8,13 @@ const books = await response.json();
 
 <Layout>
   <main>
-    <h1>Hello World</h1>
-    <ul>
-      {books.map((book: Book) => <li>{book.title}</li>)}
-    </ul>
+    <div class="container">
+      <h1>Library</h1>
+    </div>
+    <div class="gallery container">
+      <ul>
+        {books.map((book: Book) => <li>{book.title}</li>)}
+      </ul>
+    </div>
   </main>
 </Layout>
