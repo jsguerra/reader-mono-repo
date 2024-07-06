@@ -1,6 +1,7 @@
 ---
 import "@styles/reset.css";
 import "@styles/global.css";
+import Styles from './Layout.module.css';
 
 type Props = {
   pageTitle?: string | undefined;
@@ -16,27 +17,9 @@ const { pageTitle = "Example Title" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-    <style>
-      .site-header {
-        background-color: #1f1f1f;
-        margin-bottom: 30px;
-        padding: 0 20px;
-
-        .container {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-        }
-      }
-      .site-footer {
-        background-color: #1f1f1f;
-        padding: 1rem;
-        text-align: center;
-      }
-    </style>
   </head>
   <body>
-    <header class="site-header">
+    <header class={Styles["site-header"]}>
       <div class="container">
         Logo search
         <nav>Authors Favorites Tags</nav>
@@ -44,6 +27,6 @@ const { pageTitle = "Example Title" } = Astro.props;
       </div>
     </header>
     <slot />
-    <footer class="site-footer">&copy; 2024 All Rights Reserved</footer>
+    <footer class={Styles["site-footer"]}>&copy; 2024 All Rights Reserved</footer>
   </body>
 </html>
