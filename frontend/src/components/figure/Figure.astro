@@ -1,0 +1,14 @@
+---
+interface Props {
+  imageUrl: string;
+  title?: string;
+  page?: string;
+}
+
+const { imageUrl, title, page } = Astro.props;
+---
+
+<figure>
+  <img src={imageUrl} alt={title ? title : `Page ${page}`} />
+  <figcaption>{title ? title : `Page ${page}`}</figcaption>
+</figure>
