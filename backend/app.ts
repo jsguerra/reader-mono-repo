@@ -39,18 +39,20 @@ const fileStorage = multer({
       file: Express.Multer.File,
       cb: DestinationCallback
     ) => {
-      let bookSlug = req.body.title.toLowerCase();
+      const bookTitle = req.body.title;
+      let bookSlug = "default";
       let authorSlug = "default";
-      if (bookSlug) {
-        authorSlug = req.body.author.toLowerCase();
+      if (bookTitle) {
+        authorSlug = req.body.author.toLowerCase().replace(" ", "-");
+        bookSlug = req.body.slug;
       } else {
-        authorSlug = req.body.name.toLowerCase();
+        authorSlug = req.body.slug;
       }
 
       let authorSlugLetter = authorSlug.slice(0, 1);
       // Image destination = /books/a/author/book/
       // or destination = /books/a/author/
-      const destination = bookSlug
+      const destination = bookTitle
         ? `public/books/${authorSlugLetter}/${authorSlug}/${bookSlug}`
         : `public/books/${authorSlugLetter}/${authorSlug}`;
 

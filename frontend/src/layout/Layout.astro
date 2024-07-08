@@ -1,7 +1,7 @@
 ---
 import "@styles/reset.css";
 import "@styles/global.css";
-import Styles from './Layout.module.css';
+import Styles from "./Layout.module.css";
 
 type Props = {
   pageTitle?: string | undefined;
@@ -21,14 +21,16 @@ const { pageTitle = "Example Title" } = Astro.props;
   <body>
     <header class={Styles["site-header"]}>
       <div class={`${Styles["flex-container"]} container`}>
-        Logo search
-        <nav>Authors Favorites Tags</nav>
-        Admin
+        <a class={Styles.logo} href="/">Library</a> search
+        <nav><a href="/authors">Authors</a> <a href="/favorites">Favorites</a></nav>
+        <a class={Styles.admin} href="/admin">Admin</a>
       </div>
     </header>
     <main>
       <slot />
     </main>
-    <footer class={Styles["site-footer"]}>&copy; 2024 All Rights Reserved</footer>
+    <footer class={Styles["site-footer"]}>
+      &copy; 2024 All Rights Reserved
+    </footer>
   </body>
 </html>

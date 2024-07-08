@@ -4,6 +4,19 @@
   padding: 0 20px;
 }
 
+.site-header a {
+  padding: 1rem;
+}
+
+.site-header a.logo {
+  padding: 1rem 0;
+}
+
+.admin {
+  background-color: #ed2553;
+  margin-left: auto;
+}
+
 .flex-container {
   display: flex;
   align-items: center;

@@ -1,20 +1,38 @@
 ---
 import Layout from "@layout/Layout.astro";
+import Grid from "@components/Grid/Grid.astro";
+import Figure from "@components/figure/Figure.astro";
 import type { Book } from "@common/common";
 
 const response = await fetch("http://localhost:8080/books");
 const books = await response.json();
+console.log(books);
 ---
 
 <Layout>
-  <main>
-    <div class="container">
-      <h1>Library</h1>
+  <div class="container container-variant">
+    <h1>Library</h1>
+    <div class="meta">
+      <p>Total books: {books.length}</p>
+      <p>Page 1 of 2</p>
     </div>
-    <div class="gallery container">
-      <ul>
-        {books.map((book: Book) => <li>{book.title}</li>)}
-      </ul>
-    </div>
-  </main>
+  </div>
+  <Grid toggle={false}>
+    {
+      books.map((book: Book) => {
+        const bookPath = book.author.name.charAt(0).toLowerCase();
+        return (
+          <a
+            href={`http://localhost:4321/books/${book.id}`}
+          >
+            <Figure
+              imageUrl={`http://localhost:8080/books/${bookPath}/${book.author.slug}/foundation.jpg`}
+              title={book.title}
+            />
+          </a>
+        );
+      })
+    }
+  </Grid>
+  <p style="text-align: center;">pagination goes here</p>
 </Layout>
