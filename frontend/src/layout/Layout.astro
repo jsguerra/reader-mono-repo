@@ -20,13 +20,15 @@ const { pageTitle = "Example Title" } = Astro.props;
   </head>
   <body>
     <header class={Styles["site-header"]}>
-      <div class="container">
+      <div class={`${Styles["flex-container"]} container`}>
         Logo search
         <nav>Authors Favorites Tags</nav>
         Admin
       </div>
     </header>
-    <slot />
+    <main>
+      <slot />
+    </main>
     <footer class={Styles["site-footer"]}>&copy; 2024 All Rights Reserved</footer>
   </body>
 </html>

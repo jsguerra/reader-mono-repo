@@ -2,13 +2,14 @@
   background-color: #1f1f1f;
   margin-bottom: 30px;
   padding: 0 20px;
-
-  .container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
 }
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .site-footer {
   background-color: #1f1f1f;
   padding: 1rem;
