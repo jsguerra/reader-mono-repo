@@ -22,3 +22,6 @@ export interface Book {
   tag: Tag[];
   author: Author;
 }
+
+export const siteURL = "http://localhost:4321";
+export const serverURL = "http://localhost:8080";

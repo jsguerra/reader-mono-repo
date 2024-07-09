@@ -3,8 +3,9 @@ import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid/Grid.astro";
 import Figure from "@components/figure/Figure.astro";
 import type { Book } from "@common/common";
+import { siteURL, serverURL } from "@common/common";
 
-const response = await fetch("http://localhost:8080/books");
+const response = await fetch(`${serverURL}/books`);
 const books = await response.json();
 console.log(books);
 ---
@@ -23,10 +24,10 @@ console.log(books);
         const bookPath = book.author.name.charAt(0).toLowerCase();
         return (
           <a
-            href={`http://localhost:4321/books/${book.id}`}
+            href={`${siteURL}/books/${book.id}`}
           >
             <Figure
-              imageUrl={`http://localhost:8080/books/${bookPath}/${book.author.slug}/foundation.jpg`}
+              imageUrl={`${serverURL}/books/${bookPath}/${book.author.slug}/foundation.jpg`}
               title={book.title}
             />
           </a>

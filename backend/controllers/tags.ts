@@ -13,13 +13,12 @@ const getAllTags = async (req: Request, res: Response) => {
 
 // Create Tag
 const createTag = async (req: Request, res: Response) => {
-  const { name, slug, books } = req.body;
+  const { name, slug } = req.body;
   try {
     const tag = await prisma.tag.create({
       data: {
         name,
-        slug,
-        books,
+        slug
       },
     });
 
@@ -47,7 +46,7 @@ const getTag = async (req: Request, res: Response) => {
 // Update Tag
 const updateTag = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { name, slug, books } = req.body;
+  const { name, slug } = req.body;
   try {
     const tag = await prisma.tag.update({
       where: {
@@ -56,7 +55,6 @@ const updateTag = async (req: Request, res: Response) => {
       data: {
         name,
         slug,
-        books,
       },
     });
 
