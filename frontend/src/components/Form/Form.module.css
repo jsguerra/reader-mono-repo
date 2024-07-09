@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+  max-width: 600px;
+  margin: auto;
+}
+
+.form input {
+  display: block;
+  margin-top: 10px;
+}
+
+.form button {
+  background-color: #ed2553;
+  border-radius: 3px;
+  color: white;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+}
