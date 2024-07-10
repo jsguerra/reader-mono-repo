@@ -78,3 +78,8 @@ img {
   justify-content: space-between;
   align-items: center;
 }
+
+.tag-container {
+  display: flex;
+  gap: 20px;
+}
