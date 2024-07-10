@@ -28,7 +28,7 @@ model Book {
   slug      String   @unique
   pages     String?
   favorite  Boolean  @default(false)
-  tag       Tag[]
+  tags      Tag[]
   author    Author   @relation(fields: [authorId], references: [id])
   authorId  Int
 }

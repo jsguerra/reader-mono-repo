@@ -5,7 +5,7 @@ import prisma from "../util/prisma";
 const getBooks = async (req: Request, res: Response) => {
   const books = await prisma.book.findMany({
     include: {
-      tag: true,
+      tags: true,
       author: true,
     },
   });
@@ -14,7 +14,7 @@ const getBooks = async (req: Request, res: Response) => {
 
 // Create Book
 const createBook = async (req: Request, res: Response) => {
-  const { title, slug, pages, favorite, tag, authorId } = req.body;
+  const { title, slug, pages, favorite, tags, authorId } = req.body;
   try {
     const book = await prisma.book.create({
       data: {
@@ -22,7 +22,7 @@ const createBook = async (req: Request, res: Response) => {
         slug,
         pages,
         favorite,
-        tag,
+        tags,
         authorId,
       },
     });
@@ -41,7 +41,7 @@ const getBook = async (req: Request, res: Response) => {
   try {
     const book = await prisma.book.findUnique({
       where: { id: Number(id) },
-      include: { author: true, tag: true },
+      include: { author: true, tags: true },
     });
 
     res.status(200).json({ message: "displaying book", book: book });
@@ -53,7 +53,7 @@ const getBook = async (req: Request, res: Response) => {
 // Update Book
 const updateBook = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { title, slug, pages, favorite, tag, authorId } = req.body;
+  const { title, slug, pages, favorite, tags, authorId } = req.body;
   try {
     const book = await prisma.book.update({
       where: {
@@ -64,7 +64,7 @@ const updateBook = async (req: Request, res: Response) => {
         slug,
         pages,
         favorite,
-        tag,
+        tags,
         authorId,
       },
     });
