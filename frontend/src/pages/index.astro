@@ -2,12 +2,15 @@
 import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid/Grid.astro";
 import Figure from "@components/figure/Figure.astro";
-import type { Book } from "@common/common";
+import type { Book, Tag } from "@common/common";
 import { siteURL, serverURL } from "@common/common";
 
 const response = await fetch(`${serverURL}/books`);
+const response2 = await fetch(`${serverURL}/tags`);
 const books = await response.json();
+const { tags } = await response2.json();
 console.log(books);
+console.log(tags);
 ---
 
 <Layout>
@@ -17,15 +20,17 @@ console.log(books);
       <p>Total books: {books.length}</p>
       <p>Page 1 of 2</p>
     </div>
+    <div class="tag-container">
+      {tags.map((tag: Tag) => <a href={`${siteURL}/tags/${tag.id}`}>{tag.name}</a>)}
+    </div>
   </div>
   <Grid toggle={false}>
+    {books.length <= 0 && <p>There are currently no books in the library.</p>}
     {
       books.map((book: Book) => {
         const bookPath = book.author.name.charAt(0).toLowerCase();
         return (
-          <a
-            href={`${siteURL}/books/${book.id}`}
-          >
+          <a href={`${siteURL}/books/${book.id}`}>
             <Figure
               imageUrl={`${serverURL}/books/${bookPath}/${book.author.slug}/foundation.jpg`}
               title={book.title}
