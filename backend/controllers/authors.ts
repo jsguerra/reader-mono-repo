@@ -9,15 +9,14 @@ const getAuthors = async (req: Request, res: Response) => {
 
 // Create Author
 const createAuthor = async (req: Request, res: Response) => {
-  const { name, slug, thumbnail, books } = req.body;
+  const { name, slug, thumbnail } = req.body;
 
   try {
     const author = await prisma.author.create({
       data: {
         name,
         slug,
-        thumbnail,
-        books,
+        thumbnail
       },
     });
 
@@ -47,7 +46,7 @@ const getAuthor = async (req: Request, res: Response) => {
 // Update Author
 const updateAuthor = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { name, slug, thumbnail, books } = req.body;
+  const { name, slug, thumbnail } = req.body;
   try {
     const author = await prisma.author.update({
       where: {
@@ -56,8 +55,7 @@ const updateAuthor = async (req: Request, res: Response) => {
       data: {
         name,
         slug,
-        thumbnail,
-        books,
+        thumbnail
       },
     });
 
