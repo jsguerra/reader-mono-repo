@@ -1,10 +1,12 @@
 .site-header {
-  background-color: #1f1f1f;
+  background-color: var(--primary);
   margin-bottom: 30px;
   padding: 0 20px;
 }
 
 .site-header a {
+  color: var(--white);
+  font-weight: 600;
   padding: 1rem;
 }
 
@@ -12,8 +14,11 @@
   padding: 1rem 0;
 }
 
-.admin {
-  background-color: #ed2553;
+.site-header .admin {
+  background-color: var(--hover);
+  border-radius: 100px;
+  color: var(--white);
+  padding: 10px 40px;
   margin-left: auto;
 }
 
@@ -24,7 +29,7 @@
 }
 
 .site-footer {
-  background-color: #1f1f1f;
+  background-color: var(--secondary);
   padding: 1rem;
   text-align: center;
 }
