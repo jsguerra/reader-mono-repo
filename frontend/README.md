@@ -43,3 +43,38 @@ These commands can be run from inside the frontend directory:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## To Do
+Components:
+- [ ] Pagination Component
+- [ ] Scroll Up Component
+- [ ] AZ Filter Component
+- [ ] Forms
+  - [ ] Author Form Component
+  - [ ] Author Edit Form Component
+  - [ ] Book Form Component
+  - [ ] Book Edit Form Component
+  - [x] Tag Form Component
+  - [ ] Tag Edit Form Component
+  - [ ] Search Form Component
+
+Functionality:
+- [ ] Grid component functionality
+- [ ] Single image upload functionality
+- [ ] Multi image upload functionality
+
+Pages:
+- [ ] Homepage
+- [ ] Favorites Page
+- [ ] Search Results Page
+- [ ] Author Page
+- [ ] Book Page
+- [ ] Tags Results Page
+- [ ] Admin Page
+  - [ ] Author Create/Edit Page
+  - [ ] Book Create/Edit Page
+  - [ ] Tag Create/Edit Page
+
+Optional:
+- [ ] Delete functionality for Author, Book, and Tag
+- [ ] Creal uploaded image functionality
