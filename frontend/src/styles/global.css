@@ -1,3 +1,14 @@
+:root {
+  /* Brand Colours */
+  --primary: #614c92;
+  --secondary: #ede6fa;
+  --tertary: #9174BA;
+  --off-purple: #F9F6FF;
+  --white: #ffffff;
+  --off-white: #eeeeee;
+  --hover: #d772bd;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,8 +21,8 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #0d0d0d;
-  color: #f8f8f2;
+  background-color: var(--off-white);
+  color: var(--primary);
 }
 
 body {
@@ -63,8 +74,9 @@ img {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #1f1f1f;
+  background-color: var(--tertary);
   border-radius: 5px;
+  color: var(--white);
   padding: 30px 20px;
   margin-bottom: 30px;
 }
