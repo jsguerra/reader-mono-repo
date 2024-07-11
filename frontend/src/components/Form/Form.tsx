@@ -7,7 +7,7 @@ interface FormProps {
   method: string;
 }
 
-const Form: FC<FormProps> = ({ endPoint, method }) => {
+const TagForm: FC<FormProps> = ({ endPoint, method }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const ref = useRef<HTMLFormElement>(null);
 
@@ -41,4 +41,4 @@ const Form: FC<FormProps> = ({ endPoint, method }) => {
   );
 };
 
-export default Form;
+export default TagForm;
