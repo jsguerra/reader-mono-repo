@@ -28,3 +28,7 @@ Accepts formData
 
 ## File Uploads
 Ideally uploaded files would be hosted externally, in this example uploaded files are saved into the Public folder under Books. Only images are accepted in the API. All major image formats are allowed.
+
+## To Do
+- [ ] Add Query parameters to endpoints
+- [ ] Add pagination capabilities
