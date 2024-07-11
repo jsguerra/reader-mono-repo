@@ -1,6 +1,6 @@
 ---
 import Layout from "@layout/Layout.astro";
-import Form from "@components/Form/Form";
+import TagForm from "@components/Form/TagForm/TagForm";
 import { serverURL } from "@common/common";
 
 const tagEndPoint = `${serverURL}/tags`
@@ -8,5 +8,5 @@ const tagEndPoint = `${serverURL}/tags`
 
 <Layout>
   <h1>Admin Page</h1>
-  <Form endPoint={tagEndPoint} method="POST" client:load />
+  <TagForm endPoint={tagEndPoint} method="POST" client:load />
 </Layout>
