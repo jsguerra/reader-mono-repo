@@ -2,12 +2,12 @@
   /* Brand Colours */
   --primary: #614c92;
   --secondary: #ede6fa;
-  --tertary: #9174BA;
-  --off-purple: #F9F6FF;
+  --tertary: #9174ba;
+  --off-purple: #f9f6ff;
   --white: #ffffff;
   --off-white: #eeeeee;
   --hover: #d772bd;
-  --bg: #1E1F33;
+  --bg: #1e1f33;
 }
 
 * {
@@ -50,7 +50,7 @@ h3 {
 
 figure {
   background-color: #111827;
-  box-shadow: 0 1px 8px rgba(22,22,22, 0.5);
+  box-shadow: 0 1px 8px rgba(22, 22, 22, 0.5);
   margin: 0;
   padding: 0;
 }
@@ -79,7 +79,6 @@ img {
   border-radius: 5px;
   color: var(--white);
   padding: 30px 20px;
-  margin-bottom: 30px;
 }
 
 .container-variant * {
@@ -93,6 +92,35 @@ img {
 }
 
 .tag-container {
+  border-top: 1px solid rgba(255,255,255, 0.25);
   display: flex;
   gap: 20px;
+  padding-top: 1rem;
+}
+
+.tag {
+  font-size: 0.875em;
+}
+
+.btn {
+  font-weight: 500;
+  background-color: var(--hover);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: 0.3s;
+}
+
+.sr-only {
+  clip: rect(0,0,0,0);
+  border-width: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
