@@ -22,8 +22,15 @@ const { pageTitle = "Example Title" } = Astro.props;
     <header class={Styles["site-header"]}>
       <div class={`${Styles["flex-container"]} container`}>
         <a class={Styles.logo} href="/">Library</a> search
-        <nav><a href="/authors">Authors</a> <a href="/favorites">Favorites</a></nav>
-        <a class={Styles.admin} href="/admin">Admin</a>
+        <nav>
+          <a href="/authors">Authors</a>
+          <a href="/favorites">Favorites</a>
+        </nav>
+        <div class={Styles.utility}>
+          <a class={`btn ${Styles.admin}`} href="/admin/author">Author</a>
+          <a class={`btn ${Styles.admin}`} href="/admin/book">Book</a>
+          <a class={`btn ${Styles.admin}`} href="/admin/tag">Tag</a>
+        </div>
       </div>
     </header>
     <main>

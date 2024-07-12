@@ -2,6 +2,7 @@
 import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid/Grid.astro";
 import Figure from "@components/figure/Figure.astro";
+import Pagination from "@components/Pagination/Pagination";
 import type { Book, Tag } from "@common/common";
 import { siteURL, serverURL } from "@common/common";
 
@@ -21,7 +22,7 @@ console.log(tags);
       <p>Page 1 of 2</p>
     </div>
     <div class="tag-container">
-      {tags.map((tag: Tag) => <a href={`${siteURL}/tags/${tag.id}`}>{tag.name}</a>)}
+      {tags.map((tag: Tag) => <a class="btn tag" href={`${siteURL}/tags/${tag.id}`}>{tag.name}</a>)}
     </div>
   </div>
   <Grid toggle={false}>
@@ -40,5 +41,5 @@ console.log(tags);
       })
     }
   </Grid>
-  <p style="text-align: center;">pagination goes here</p>
+  <Pagination page={1} pages={10} />
 </Layout>
