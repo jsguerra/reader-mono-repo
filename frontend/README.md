@@ -46,8 +46,8 @@ These commands can be run from inside the frontend directory:
 
 ## To Do
 Components:
-- [ ] Pagination Component
-- [ ] Scroll Up Component
+- [x] Pagination Component
+- [x] Scroll Up Component
 - [ ] AZ Filter Component
 - [ ] Forms
   - [ ] Author Form Component
@@ -71,9 +71,12 @@ Pages:
 - [ ] Book Page
 - [ ] Tags Results Page
 - [ ] Admin Page
-  - [ ] Author Create/Edit Page
-  - [ ] Book Create/Edit Page
-  - [ ] Tag Create/Edit Page
+  - [ ] Author Create Page
+  - [ ] Author Edit Page
+  - [ ] Book Create Page
+  - [ ] Book Edit Page
+  - [ ] Tag Create Page
+  - [ ] Tag Edit Page
 
 Optional:
 - [ ] Delete functionality for Author, Book, and Tag
