@@ -1,7 +1,13 @@
 ---
 import Layout from "@layout/Layout.astro";
+import TagForm from "@components/Form/TagForm/TagForm";
+import { serverURL } from "@common/common";
 ---
 
 <Layout>
-  <h1>Page Title</h1>
+  <div class="container container-variant">
+    <h1>Add Tag</h1>
+    <TagForm method="POST" endPoint={`${serverURL}/tags`} client:load />
+  </div>
+  
 </Layout>
