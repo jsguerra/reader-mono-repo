@@ -35,7 +35,7 @@ const TagForm: FC<FormProps> = ({ endPoint, method }) => {
         Slug
         <input type="text" id="slug" name="slug" required />
       </label>
-      <button>Send</button>
+      <button className="btn">Send</button>
       {responseMessage && <p>{responseMessage}</p>}
     </form>
   );
