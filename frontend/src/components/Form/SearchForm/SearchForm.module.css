@@ -1,0 +1,17 @@
+.search input {
+  background-color: var(--search-bg);
+  border: 1px solid var(--search-border);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 0;
+  padding: 0.25rem;
+}
+
+.search button {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 0.35rem 0.75rem 0.3rem;
+}
