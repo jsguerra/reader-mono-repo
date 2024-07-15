@@ -2,6 +2,7 @@
 import "@styles/reset.css";
 import "@styles/global.css";
 import Styles from "./Layout.module.css";
+import SearchForm from "@components/Form/SearchForm/SearchForm";
 
 type Props = {
   pageTitle?: string | undefined;
@@ -21,7 +22,8 @@ const { pageTitle = "Example Title" } = Astro.props;
   <body>
     <header class={Styles["site-header"]}>
       <div class={`${Styles["flex-container"]} container`}>
-        <a class={Styles.logo} href="/">Library</a> search
+        <a class={Styles.logo} href="/">Library</a>
+        <SearchForm />
         <nav>
           <a href="/authors">Authors</a>
           <a href="/favorites">Favorites</a>
