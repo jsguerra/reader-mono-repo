@@ -81,7 +81,7 @@ img {
   padding: 30px 20px;
 }
 
-.container-variant * {
+.container-variant *:not(input) {
   margin: 0;
 }
 
