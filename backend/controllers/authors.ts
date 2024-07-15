@@ -16,7 +16,7 @@ const createAuthor = async (req: Request, res: Response) => {
       data: {
         name,
         slug,
-        thumbnail
+        thumbnail,
       },
     });
 
@@ -55,7 +55,7 @@ const updateAuthor = async (req: Request, res: Response) => {
       data: {
         name,
         slug,
-        thumbnail
+        thumbnail,
       },
     });
 
