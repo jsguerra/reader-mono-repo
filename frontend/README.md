@@ -50,7 +50,7 @@ Components:
 - [x] Scroll Up Component
 - [ ] AZ Filter Component
 - [ ] Forms
-  - [ ] Author Form Component
+  - [x] Author Form Component
   - [ ] Author Edit Form Component
   - [ ] Book Form Component
   - [ ] Book Edit Form Component
@@ -64,18 +64,19 @@ Functionality:
 - [ ] Multi image upload functionality
 
 Pages:
-- [ ] Homepage
+- [x] Homepage
 - [ ] Favorites Page
 - [ ] Search Results Page
-- [ ] Author Page
+- [x] Author Page
+  - [ ] Add AZ filter
 - [ ] Book Page
 - [ ] Tags Results Page
 - [ ] Admin Page
-  - [ ] Author Create Page
+  - [x] Author Create Page
   - [ ] Author Edit Page
   - [ ] Book Create Page
   - [ ] Book Edit Page
-  - [ ] Tag Create Page
+  - [x] Tag Create Page
   - [ ] Tag Edit Page
 
 Optional:
