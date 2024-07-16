@@ -1,7 +1,11 @@
 ---
 import Layout from "@layout/Layout.astro";
+import BookForm from "@components/Form/BookForm/BookForm";
 ---
 
 <Layout>
-  <h1>Page Title</h1>
+  <div class="container container-variant">
+    <h1 style="text-align: center;">Add Book</h1>
+    <BookForm authors={[]} endPoint="" method="POST" tags={[]} client:load />
+  </div>
 </Layout>
