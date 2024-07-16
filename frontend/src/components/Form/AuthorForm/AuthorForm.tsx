@@ -57,11 +57,23 @@ const AuthorForm: FC<FormProps> = ({ endPoint, method }) => {
       <form ref={ref} className={Styles.form} onSubmit={submit}>
         <label>
           Name
-          <input type="text" id="name" name="name" required />
+          <input
+            autoComplete="off"
+            type="text"
+            id="name"
+            name="name"
+            required
+          />
         </label>
         <label>
           Slug
-          <input type="text" id="slug" name="slug" required />
+          <input
+            autoComplete="off"
+            type="text"
+            id="slug"
+            name="slug"
+            required
+          />
         </label>
         <label>
           Thumbnail
