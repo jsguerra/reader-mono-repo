@@ -4,7 +4,7 @@
   gap: 40px;
 }
 
-form {
+.form-container form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -12,8 +12,8 @@ form {
   gap: 20px;
 }
 
-form input {
+.form-container form input {
   display: block;
   margin-top: 10px;
-  padding: 10px;
+  padding: 5px;
 }
