@@ -1,11 +1,24 @@
 ---
 import Layout from "@layout/Layout.astro";
 import BookForm from "@components/Form/BookForm/BookForm";
+import { serverURL } from "@common/common";
+
+const authorResp = await fetch(`${serverURL}/authors`);
+const authors = await authorResp.json();
+const tagResp = await fetch(`${serverURL}/tags`);
+const { tags } = await tagResp.json();
+console.log("This is the response ", tags);
 ---
 
 <Layout>
   <div class="container container-variant">
     <h1 style="text-align: center;">Add Book</h1>
-    <BookForm authors={[]} endPoint="" method="POST" tags={[]} client:load />
+    <BookForm
+      authors={authors}
+      endPoint=""
+      method="POST"
+      tags={tags}
+      client:load
+    />
   </div>
 </Layout>
