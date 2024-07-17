@@ -1,0 +1,38 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.form-container form input {
+  display: block;
+  padding: 5px;
+}
+
+.check-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selection {
+  columns: 4;
+}
+
+.selection label {
+  margin-bottom: 20px;
+}
+
+.favorite {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
