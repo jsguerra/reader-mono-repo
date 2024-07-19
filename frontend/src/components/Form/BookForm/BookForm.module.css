@@ -17,10 +17,18 @@
   padding: 5px;
 }
 
-.check-box {
+
+.check-box,
+.favorite {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.check-box input,
+.favorite input {
+  width: 20px;
+  height: 20px;
 }
 
 .selection {
@@ -29,10 +37,4 @@
 
 .selection label {
   margin-bottom: 20px;
-}
-
-.favorite {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
