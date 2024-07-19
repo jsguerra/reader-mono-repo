@@ -7,7 +7,6 @@ const authorResp = await fetch(`${serverURL}/authors`);
 const authors = await authorResp.json();
 const tagResp = await fetch(`${serverURL}/tags`);
 const { tags } = await tagResp.json();
-console.log("This is the response ", tags);
 ---
 
 <Layout>
@@ -15,7 +14,7 @@ console.log("This is the response ", tags);
     <h1 style="text-align: center;">Add Book</h1>
     <BookForm
       authors={authors}
-      endPoint=""
+      endPoint={`${serverURL}/books`}
       method="POST"
       tags={tags}
       client:load
