@@ -29,6 +29,22 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
   const ref = useRef<HTMLFormElement>(null);
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
 
+  let pages = "";
+
+  const handleFiles = (event: ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+
+    if (files && files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        pages += files[0].name;
+
+        if (i < files.length - 1) {
+          pages += ", ";
+        }
+      }
+    }
+  };
+
   const handleCheckboxChange = (tagId: number) => {
     setSelectedTags((prevSelectedTags) => {
       if (prevSelectedTags.includes(tagId)) {
@@ -63,6 +79,7 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
           name="images"
           multiple
           type="file"
+          onChange={handleFiles}
         />
         <input
           autoComplete="off"
