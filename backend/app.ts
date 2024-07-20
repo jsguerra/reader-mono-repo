@@ -40,10 +40,11 @@ const fileStorage = multer({
       cb: DestinationCallback
     ) => {
       const bookTitle = req.body.title;
+      const authorValue = req.body.author.split(":");
       let bookSlug = "default";
       let authorSlug = "default";
       if (bookTitle) {
-        authorSlug = req.body.author.toLowerCase().replace(" ", "-");
+        authorSlug = authorValue[0].toLowerCase().replace(" ", "-");
         bookSlug = req.body.slug;
       } else {
         authorSlug = req.body.slug;
