@@ -28,21 +28,22 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const ref = useRef<HTMLFormElement>(null);
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
-
-  let pages = "";
+  const [pageCollection, setPageCollection] = useState("");
 
   const handleFiles = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
+    let pages = "";
 
     if (files && files.length > 0) {
       for (let i = 0; i < files.length; i++) {
-        pages += files[0].name;
+        pages += files[i].name;
 
         if (i < files.length - 1) {
           pages += ", ";
         }
       }
     }
+    setPageCollection(pages);
   };
 
   const handleCheckboxChange = (tagId: number) => {
@@ -55,9 +56,23 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
     });
   };
 
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const response = await fetch(endPoint, {
+      method: method,
+      body: formData,
+    });
+    const data = await response.json();
+    if (data.message) {
+      ref.current?.reset();
+      setResponseMessage(data.message);
+    }
+  }
+
   return (
     <div className={Styles["form-container"]}>
-      <form ref={ref} className={Styles.form}>
+      <form ref={ref} onSubmit={submit} className={Styles.form}>
         <input
           autoComplete="off"
           type="text"
@@ -75,24 +90,19 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
           required
         />
         <input
-          accept="image/png, image/jpeg"
-          name="images"
-          multiple
-          type="file"
-          onChange={handleFiles}
-        />
-        <input
           autoComplete="off"
           type="text"
           id="pages"
           name="pages"
           placeholder="Pages"
+          value={pageCollection}
+          onChange={() => console.log(pageCollection)}
         />
-        <select name="authorId" id="author-id">
+        <select name="author" id="author">
           <option value="">--Please choose an author--</option>
           {authors &&
             authors.map((author) => (
-              <option key={author.id} value={author.id}>
+              <option key={author.id} value={`${author.name}:${author.id}`}>
                 {author.name}
               </option>
             ))}
@@ -107,7 +117,7 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
               return (
                 <label className={Styles["check-box"]} key={tag.id}>
                   <input
-                    name="tag"
+                    name="tags"
                     type="checkbox"
                     value={tag.id}
                     checked={selectedTags.includes(tag.id)}
@@ -119,6 +129,14 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
             })}
           </div>
         )}
+        <input
+          accept="image/png, image/jpeg"
+          id="fileUpload"
+          name="fileUpload"
+          multiple
+          type="file"
+          onChange={handleFiles}
+        />
         <button className={`btn`}>Submit</button>
         {responseMessage && <p>{responseMessage}</p>}
       </form>
