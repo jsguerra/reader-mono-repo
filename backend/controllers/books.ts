@@ -14,22 +14,27 @@ const getBooks = async (req: Request, res: Response) => {
 
 // Create Book
 const createBook = async (req: Request, res: Response) => {
-  const { title, slug, pages, favorite, tags, authorId } = req.body;
+  const { title, slug, pages, favorite, tags, author } = req.body;
+  const authorValue = author.split(":");
+  const authorId = Number(authorValue[1]);
+  const favBoolean = favorite === "on" ? true : false;
+  const tagIds = tags.map((tag: string) => {
+    const id = tag;
+    return { id: Number(id), name: "", slug: "" };
+  });
   try {
     const book = await prisma.book.create({
       data: {
         title,
         slug,
         pages,
-        favorite,
-        tags,
+        favorite: favBoolean,
+        tags: tagIds,
         authorId,
       },
     });
 
-    res
-      .status(200)
-      .json({ message: "Book successfully created!", book: book });
+    res.status(200).json({ message: "Book successfully created!", book: book });
   } catch (error) {
     console.log(error);
   }
@@ -69,9 +74,7 @@ const updateBook = async (req: Request, res: Response) => {
       },
     });
 
-    res
-      .status(200)
-      .json({ message: "Book has been updated", book: book });
+    res.status(200).json({ message: "Book has been updated", book: book });
   } catch (error) {
     console.log(error);
   }
@@ -87,9 +90,7 @@ const deleteBook = async (req: Request, res: Response) => {
       },
     });
 
-    res
-      .status(200)
-      .json({ message: "Book has been deleted", book: book });
+    res.status(200).json({ message: "Book has been deleted", book: book });
   } catch (error) {
     console.error(error);
   }
