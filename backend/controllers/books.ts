@@ -20,7 +20,7 @@ const createBook = async (req: Request, res: Response) => {
   const favBoolean = favorite === "on" ? true : false;
   const tagIds = tags.map((tag: string) => {
     const id = tag;
-    return { id: Number(id), name: "", slug: "" };
+    return { id: Number(id) };
   });
   try {
     const book = await prisma.book.create({
@@ -29,7 +29,9 @@ const createBook = async (req: Request, res: Response) => {
         slug,
         pages,
         favorite: favBoolean,
-        tags: tagIds,
+        tags: {
+          connect: tagIds,
+        },
         authorId,
       },
     });
