@@ -23,7 +23,7 @@ const authors = await response.json();
       authors.map((author: Author) => {
         const authorPath = author.name.charAt(0).toLowerCase();
         return (
-          <a href={`${siteURL}/books/${author.id}`}>
+          <a href={`${siteURL}/authors/${author.id}`}>
             <Figure
               imageUrl={`${serverURL}/books/${authorPath}/${author.slug}/${author.thumbnail}`}
               title={author.name}
