@@ -10,7 +10,6 @@ const response = await fetch(`${serverURL}/books`);
 const response2 = await fetch(`${serverURL}/tags`);
 const books = await response.json();
 const { tags } = await response2.json();
-console.log(books);
 ---
 
 <Layout>
@@ -29,10 +28,16 @@ console.log(books);
     {
       books.map((book: Book) => {
         const bookPath = book.author.name.charAt(0).toLowerCase();
+        const firstImage = book.pages?.split(", ");
+        let thumbnail = "";
+        if (firstImage) {
+          thumbnail = firstImage[0];
+        }
+
         return (
           <a href={`${siteURL}/books/${book.id}`}>
             <Figure
-              imageUrl={`${serverURL}/books/${bookPath}/${book.author.slug}/foundation.jpg`}
+              imageUrl={`${serverURL}/books/${bookPath}/${book.author.slug}/${book.slug}/${thumbnail}`}
               title={book.title}
             />
           </a>
