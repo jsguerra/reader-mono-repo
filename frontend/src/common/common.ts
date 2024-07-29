@@ -19,7 +19,7 @@ export interface Book {
   slug: string;
   pages?: string;
   favorite: boolean;
-  tag: Tag[];
+  tags: Tag[];
   author: Author;
 }
 
