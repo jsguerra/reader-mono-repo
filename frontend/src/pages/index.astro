@@ -6,10 +6,12 @@ import Pagination from "@components/Pagination/Pagination";
 import type { Book, Tag } from "@common/common";
 import { siteURL, serverURL } from "@common/common";
 
-const response = await fetch(`${serverURL}/books`);
-const response2 = await fetch(`${serverURL}/tags`);
-const books = await response.json();
-const { tags } = await response2.json();
+const [bookResp, tagsResp] = await Promise.all([
+  fetch(`${serverURL}/books`),
+  fetch(`${serverURL}/tags`)
+]);
+const books = await bookResp.json();
+const { tags } = await tagsResp.json();
 ---
 
 <Layout>
