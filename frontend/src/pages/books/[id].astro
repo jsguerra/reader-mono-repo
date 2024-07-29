@@ -1,11 +1,29 @@
 ---
 import Layout from "@layout/Layout.astro";
+import type { Book, Tag } from "@common/common";
+import { siteURL, serverURL } from "@common/common";
+
+interface ApiResponse {
+  book: Book;
+}
 
 const { id } = Astro.params;
+const bookResp = await fetch(`${serverURL}/books/${id}`);
+const { book } = await bookResp.json() as ApiResponse;
 ---
 
 <Layout>
-  <h1>Book id: {id}</h1>
-  <p>Should display all the pages of a book, toggle buttons to display grid columns, the scroll buttons.</p>
-  <p>Optional data to display: author and tags.</p>
+  <div class="container container-variant">
+    <h1>{book.title}</h1>
+    <p>{`Author: ${book.author.name}`}</p>
+    <div class="tag-container">
+      {
+        book.tags.map((tag: Tag) => (
+          <a class="btn tag" href={`${siteURL}/tags/${tag.id}`}>
+            {tag.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
 </Layout>
