@@ -22,4 +22,4 @@ bookRoutes.get("/books/:id", getBook);
 bookRoutes.put("/books/:id", updateBook);
 
 // Delete Book
-bookRoutes.delete("/books:id", deleteBook);
+bookRoutes.delete("/books/:id", deleteBook);
