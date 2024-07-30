@@ -29,7 +29,7 @@ const { tags } = await tagsResp.json();
     {books.length <= 0 && <p>There are currently no books in the library.</p>}
     {
       books.map((book: Book) => {
-        const bookPath = book.author.name.charAt(0).toLowerCase();
+        const letterDirectory = book.author.name.charAt(0).toLowerCase();
         const firstImage = book.pages?.split(", ");
         let thumbnail = "";
         if (firstImage) {
@@ -39,7 +39,7 @@ const { tags } = await tagsResp.json();
         return (
           <a href={`${siteURL}/books/${book.id}`}>
             <Figure
-              imageUrl={`${serverURL}/books/${bookPath}/${book.author.slug}/${book.slug}/${thumbnail}`}
+              imageUrl={`${serverURL}/books/${letterDirectory}/${book.author.slug}/${book.slug}/${thumbnail}`}
               title={book.title}
             />
           </a>
