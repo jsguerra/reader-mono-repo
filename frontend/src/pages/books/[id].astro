@@ -1,5 +1,8 @@
 ---
 import Layout from "@layout/Layout.astro";
+import Grid from "@components/Grid/Grid.astro";
+import Figure from "@components/figure/Figure.astro";
+import ScrollBtn from "@components/ScrollBtn/ScrollBtn";
 import type { Book, Tag } from "@common/common";
 import { siteURL, serverURL } from "@common/common";
 
@@ -9,13 +12,15 @@ interface ApiResponse {
 
 const { id } = Astro.params;
 const bookResp = await fetch(`${serverURL}/books/${id}`);
-const { book } = await bookResp.json() as ApiResponse;
+const { book } = (await bookResp.json()) as ApiResponse;
+const pages = book.pages?.split(", ");
 ---
 
 <Layout>
   <div class="container container-variant">
     <h1>{book.title}</h1>
-    <p>{`Author: ${book.author.name}`}</p>
+    <p>Author: {book.author.name}</p>
+    <p>Number of pages: {pages?.length}</p>
     <div class="tag-container">
       {
         book.tags.map((tag: Tag) => (
@@ -26,4 +31,18 @@ const { book } = await bookResp.json() as ApiResponse;
       }
     </div>
   </div>
+  <Grid toggle={true} client:load>
+    {
+      pages && pages.map((page) => { 
+        const letterDirectory = book.author.name.charAt(0).toLowerCase();
+
+        return (
+        <Figure
+          imageUrl={`${serverURL}/books/${letterDirectory}/${book.author.slug}/${book.slug}/${page}`}
+          title={page}
+        />
+      )})
+    }
+  </Grid>
+  <ScrollBtn client:load />
 </Layout>
