@@ -31,7 +31,7 @@ const pages = book.pages?.split(", ");
       }
     </div>
   </div>
-  <Grid toggle={true} client:load>
+  <Grid toggle={true}>
     {
       pages && pages.map((page) => { 
         const letterDirectory = book.author.name.charAt(0).toLowerCase();
