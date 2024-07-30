@@ -52,7 +52,7 @@ Components:
 - [ ] Forms
   - [x] Author Form Component
   - [ ] Author Edit Form Component
-  - [ ] Book Form Component
+  - [x] Book Form Component
   - [ ] Book Edit Form Component
   - [x] Tag Form Component
   - [ ] Tag Edit Form Component
@@ -60,8 +60,8 @@ Components:
 
 Functionality:
 - [ ] Grid component functionality
-- [ ] Single image upload functionality
-- [ ] Multi image upload functionality
+- [x] Single image upload functionality
+- [x] Multi image upload functionality
 
 Pages:
 - [x] Homepage
@@ -69,12 +69,12 @@ Pages:
 - [ ] Search Results Page
 - [x] Author Page
   - [ ] Add AZ filter
-- [ ] Book Page
+- [x] Book Page
 - [ ] Tags Results Page
 - [ ] Admin Page
   - [x] Author Create Page
   - [ ] Author Edit Page
-  - [ ] Book Create Page
+  - [x] Book Create Page
   - [ ] Book Edit Page
   - [x] Tag Create Page
   - [ ] Tag Edit Page
