@@ -1,10 +1,44 @@
 ---
 import Layout from "@layout/Layout.astro";
+import Grid from "@components/Grid/Grid";
+import Figure from "@components/figure/Figure.astro";
+import type { Author } from "@common/common";
+import { siteURL, serverURL } from "@common/common";
+
+interface ApiResponse {
+  author: Author;
+}
 
 const { id } = Astro.params;
+const authorResp = await fetch(`${serverURL}/authors/${id}`);
+const { author } = (await authorResp.json()) as ApiResponse;
+const letterDirectory = author.name.charAt(0).toLowerCase();
+const { books } = author;
 ---
 
 <Layout>
-  <h1>Author ID: {id}</h1>
-  <p>Should display the author and the books associated with the author.</p>
+  <div class="container container-variant">
+    <h1>Author: {author.name}</h1>
+    <p>Total number of books: {author.books.length}</p>
+  </div>
+  <Grid toggle={false}>
+    {books.length <= 0 && <p>There are currently no books in the library.</p>}
+    {
+      books.map((book) => {
+        const firstImage = book.pages?.split(", ");
+        let thumbnail = "";
+        if (firstImage) {
+          thumbnail = firstImage[0];
+        }
+        return (
+          <a href={`${siteURL}/books/${book.id}`}>
+            <Figure
+              imageUrl={`${serverURL}/books/${letterDirectory}/${author.slug}/${book.slug}/${thumbnail}`}
+              title={book.title}
+            />
+          </a>
+        );
+      })
+    }
+  </Grid>
 </Layout>
