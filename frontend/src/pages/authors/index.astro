@@ -1,6 +1,6 @@
 ---
 import Layout from "@layout/Layout.astro";
-import Grid from "@components/Grid/Grid.astro";
+import Grid from "@components/Grid/Grid";
 import Figure from "@components/figure/Figure.astro";
 import { siteURL, serverURL } from "@common/common";
 import type { Author } from "@common/common";
@@ -17,6 +17,7 @@ const authors = await response.json();
       <p>Page 1 of 2</p>
     </div>
   </div>
+  <p>Should show a list of Authors, have pagination and an alphanumeric filter.</p>
   <Grid toggle={false}>
     {authors.length <= 0 && <p>There are currently no authors in the library.</p>}
     {
@@ -33,5 +34,4 @@ const authors = await response.json();
       })
     }
   </Grid>
-  <p>Should show a list of Authors, have pagination and an alphanumeric filter.</p>
 </Layout>
