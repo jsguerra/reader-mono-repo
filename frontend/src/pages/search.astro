@@ -1,0 +1,18 @@
+---
+import Layout from "@layout/Layout.astro";
+import type { Book, Tag } from "@common/common";
+import { siteURL, serverURL } from "@common/common";
+
+const q = Astro.url.searchParams.get("q") ?? undefined;
+// const query = q.searchParams.toString();
+const bookResp = await fetch(`${serverURL}/books?q=${q}`);
+const books = await bookResp.json();
+console.log(books);
+---
+
+<Layout>
+  <div class="container container-variant">
+    <h1>Search Results</h1>
+    <p>Params: {q}</p>
+  </div>
+</Layout>
