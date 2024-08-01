@@ -1,7 +1,13 @@
 ---
-import Layout from "@layout/Layout.astro"
+import Layout from "@layout/Layout.astro";
+import Grid from "@components/Grid/Grid";
 ---
 
 <Layout>
-  <h1>Favorites</h1>
+  <div class="container container-variant">
+    <h1>Favorites</h1>
+  </div>
+  <Grid toggle={false}>
+    <p>There are currently no favorite books.</p>
+  </Grid>
 </Layout>
