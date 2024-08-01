@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import type { FormEvent, FC } from "react";
-import Styles from "../Form.module.css";
+import Styles from "./TagForm.module.css";
 
 interface FormProps {
   endPoint: string;
@@ -29,11 +29,25 @@ const TagForm: FC<FormProps> = ({ endPoint, method }) => {
     <form ref={ref} className={Styles.form} onSubmit={submit}>
       <label>
         Name
-        <input autoComplete="off" type="text" id="name" name="name" required />
+        <input
+          className={Styles.input}
+          autoComplete="off"
+          type="text"
+          id="name"
+          name="name"
+          required
+        />
       </label>
       <label>
         Slug
-        <input autoComplete="off" type="text" id="slug" name="slug" required />
+        <input
+          className={Styles.input}
+          autoComplete="off"
+          type="text"
+          id="slug"
+          name="slug"
+          required
+        />
       </label>
       <button className="btn">Send</button>
       {responseMessage && <p>{responseMessage}</p>}
