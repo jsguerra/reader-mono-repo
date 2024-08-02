@@ -56,7 +56,7 @@ Components:
   - [ ] Book Edit Form Component
   - [x] Tag Form Component
   - [ ] Tag Edit Form Component
-  - [ ] Search Form Component
+  - [x] Search Form Component
 
 Functionality:
 - [ ] Grid component functionality
@@ -66,7 +66,8 @@ Functionality:
 Pages:
 - [x] Homepage
 - [ ] Favorites Page
-- [ ] Search Results Page
+- [x] Search Results Page
+  - [ ] Search Pagination
 - [x] Author Page
   - [ ] Add AZ filter
 - [x] Book Page
