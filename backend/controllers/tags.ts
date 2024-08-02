@@ -18,7 +18,7 @@ const createTag = async (req: Request, res: Response) => {
     const tag = await prisma.tag.create({
       data: {
         name,
-        slug
+        slug,
       },
     });
 
@@ -34,7 +34,13 @@ const getTag = async (req: Request, res: Response) => {
   try {
     const tag = await prisma.tag.findUnique({
       where: { id: Number(id) },
-      include: { books: true },
+      include: {
+        books: {
+          include: {
+            author: true,
+          },
+        },
+      },
     });
 
     res.status(200).json({ message: "displaying tag", tag: tag });
