@@ -1,15 +1,46 @@
 ---
 import Layout from "@layout/Layout.astro";
+import Grid from "@components/Grid/Grid";
+import Figure from "@components/figure/Figure";
+import type { Book, Tag } from "@common/common";
+import { siteURL, serverURL } from "@common/common";
+
+interface ApiResponse {
+  tag: Tag;
+}
 
 const { id } = Astro.params;
+const response = await fetch(`${serverURL}/tags/${id}`);
+const { tag } = (await response.json()) as ApiResponse;
+const books = tag.books;
+console.log(tag);
 ---
 
 <Layout>
   <div class="container container-variant">
-    <h1>Tag id: {id}</h1>
-    <p>
-      Should display a list of books that are associated with the tag. Should
-      display the total number of books under the tag and display pagination.
-    </p>
+    <h1>Tag: {tag.name}</h1>
+    <p>Total books: {tag.books.length}</p>
   </div>
+  <Grid>
+    {books.length <= 0 && <p>There are currently no books in the library.</p>}
+    {
+      books.map((book: Book) => {
+        const letterDirectory = book.author.name.charAt(0).toLowerCase();
+        const firstImage = book.pages?.split(", ");
+        let thumbnail = "";
+        if (firstImage) {
+          thumbnail = firstImage[0];
+        }
+
+        return (
+          <a href={`${siteURL}/books/${book.id}`}>
+            <Figure
+              imageUrl={`${serverURL}/books/${letterDirectory}/${book.author.slug}/${book.slug}/${thumbnail}`}
+              title={book.title}
+            />
+          </a>
+        );
+      })
+    }
+  </Grid>
 </Layout>
