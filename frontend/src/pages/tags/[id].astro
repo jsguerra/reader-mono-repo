@@ -13,7 +13,6 @@ const { id } = Astro.params;
 const response = await fetch(`${serverURL}/tags/${id}`);
 const { tag } = (await response.json()) as ApiResponse;
 const books = tag.books;
-console.log(tag);
 ---
 
 <Layout>
@@ -21,7 +20,7 @@ console.log(tag);
     <h1>Tag: {tag.name}</h1>
     <p>Total books: {tag.books.length}</p>
   </div>
-  <Grid>
+  <Grid books={books} client:load>
     {books.length <= 0 && <p>There are currently no books in the library.</p>}
     {
       books.map((book: Book) => {
