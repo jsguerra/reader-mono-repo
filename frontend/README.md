@@ -59,7 +59,7 @@ Components:
   - [x] Search Form Component
 
 Functionality:
-- [ ] Grid component functionality
+- [x] Grid component functionality
 - [x] Single image upload functionality
 - [x] Multi image upload functionality
 
