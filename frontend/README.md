@@ -65,13 +65,15 @@ Functionality:
 
 Pages:
 - [x] Homepage
-- [ ] Favorites Page
+- [x] Favorites Page
 - [x] Search Results Page
   - [ ] Search Pagination
 - [x] Author Page
   - [ ] Add AZ filter
 - [x] Book Page
-- [ ] Tags Results Page
+  - [ ] Configure page pagination
+- [x] Tags Results Page
+  - [ ] Add results pagination
 - [ ] Admin Page
   - [x] Author Create Page
   - [ ] Author Edit Page
