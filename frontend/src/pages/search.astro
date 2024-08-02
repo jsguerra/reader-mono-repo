@@ -1,13 +1,13 @@
 ---
 import Layout from "@layout/Layout.astro";
+import Grid from "@components/Grid/Grid";
+import Figure from "@components/figure/Figure";
 import type { Book, Tag } from "@common/common";
 import { siteURL, serverURL } from "@common/common";
 
 const q = Astro.url.searchParams.get("q") ?? undefined;
-// const query = q.searchParams.toString();
 const bookResp = await fetch(`${serverURL}/books?q=${q}`);
 const books = await bookResp.json();
-console.log(books);
 ---
 
 <Layout>
@@ -15,4 +15,26 @@ console.log(books);
     <h1>Search Results</h1>
     <p>Params: {q}</p>
   </div>
+  <Grid>
+    {books.length <= 0 && <p>There are currently no books in the library.</p>}
+    {
+      books.map((book: Book) => {
+        const letterDirectory = book.author.name.charAt(0).toLowerCase();
+        const firstImage = book.pages?.split(", ");
+        let thumbnail = "";
+        if (firstImage) {
+          thumbnail = firstImage[0];
+        }
+
+        return (
+          <a href={`${siteURL}/books/${book.id}`}>
+            <Figure
+              imageUrl={`${serverURL}/books/${letterDirectory}/${book.author.slug}/${book.slug}/${thumbnail}`}
+              title={book.title}
+            />
+          </a>
+        );
+      })
+    }
+  </Grid>
 </Layout>
