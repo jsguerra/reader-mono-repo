@@ -10,7 +10,7 @@ export interface Tag {
   id: number;
   name: string;
   slug: string;
-  book: Book[];
+  books: Book[];
 }
 
 export interface Book {
