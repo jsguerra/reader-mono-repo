@@ -1,13 +1,40 @@
 ---
 import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid/Grid";
+import Figure from "@components/figure/Figure";
+import type { Book } from "@common/common";
+import { siteURL, serverURL } from "@common/common";
+
+const response = await fetch(`${serverURL}/favorites`);
+const { favorites } = await response.json();
+console.log(favorites);
 ---
 
 <Layout>
   <div class="container container-variant">
     <h1>Favorites</h1>
+    <p>Total favorites: {favorites.length}</p>
   </div>
   <Grid toggle={false}>
-    <p>There are currently no favorite books.</p>
+    {favorites.length <= 0 && <p>There are currently no books in the library.</p>}
+    {
+      favorites.map((book: Book) => {
+        const letterDirectory = book.author.name.charAt(0).toLowerCase();
+        const firstImage = book.pages?.split(", ");
+        let thumbnail = "";
+        if (firstImage) {
+          thumbnail = firstImage[0];
+        }
+
+        return (
+          <a href={`${siteURL}/books/${book.id}`}>
+            <Figure
+              imageUrl={`${serverURL}/books/${letterDirectory}/${book.author.slug}/${book.slug}/${thumbnail}`}
+              title={book.title}
+            />
+          </a>
+        );
+      })
+    }
   </Grid>
 </Layout>
