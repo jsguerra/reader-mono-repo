@@ -3,13 +3,30 @@ import prisma from "../util/prisma";
 
 // Get all Books
 const getBooks = async (req: Request, res: Response) => {
-  const books = await prisma.book.findMany({
-    include: {
-      tags: true,
-      author: true,
-    },
-  });
-  res.status(200).json(books);
+  const { query } = req;
+
+  if (query.q) {
+    const results = await prisma.book.findMany({
+      where: {
+        title: {
+          contains: query.q.toString(),
+        },
+      },
+      include: {
+        tags: true,
+        author: true,
+      },
+    });
+    res.status(200).json(results);
+  } else {
+    const books = await prisma.book.findMany({
+      include: {
+        tags: true,
+        author: true,
+      },
+    });
+    res.status(200).json(books);
+  }
 };
 
 // Create Book
