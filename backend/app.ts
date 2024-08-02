@@ -4,6 +4,7 @@ import express, { Request } from "express";
 import { authorRoutes } from "./routes/authors";
 import { bookRoutes } from "./routes/books";
 import { tagRoutes } from "./routes/tags";
+import { favoritesRoutes } from "./routes/favorites";
 import multer, { FileFilterCallback } from "multer";
 
 type DestinationCallback = (error: Error | null, destination: string) => void;
@@ -84,6 +85,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(authorRoutes);
+app.use(favoritesRoutes);
 app.use(bookRoutes);
 app.use(tagRoutes);
 
