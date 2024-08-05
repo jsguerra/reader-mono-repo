@@ -32,4 +32,4 @@ Ideally uploaded files would be hosted externally, in this example uploaded file
 ## To Do
 - [x] Add Query parameters to endpoints
 - [x] Add Favorites endpoint
-- [ ] Add pagination capabilities
+- [x] Add pagination capabilities
