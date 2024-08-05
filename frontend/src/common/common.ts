@@ -8,6 +8,7 @@ export interface Author {
 
 export interface Tag {
   id: number;
+  _count: { books: number };
   name: string;
   slug: string;
   books: Book[];
