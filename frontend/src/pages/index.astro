@@ -8,10 +8,11 @@ import { siteURL, serverURL } from "@common/common";
 
 const [bookResp, tagsResp] = await Promise.all([
   fetch(`${serverURL}/books`),
-  fetch(`${serverURL}/tags`)
+  fetch(`${serverURL}/tags`),
 ]);
-const books = await bookResp.json();
+const { page, limit, records, books } = await bookResp.json();
 const { tags } = await tagsResp.json();
+const pages = Math.ceil(records / limit);
 ---
 
 <Layout>
@@ -22,7 +23,13 @@ const { tags } = await tagsResp.json();
       <p>Page 1 of 2</p>
     </div>
     <div class="tag-container">
-      {tags.map((tag: Tag) => <a class="btn tag" href={`${siteURL}/tags/${tag.id}`}>{tag.name}</a>)}
+      {
+        tags.map((tag: Tag) => (
+          <a class="btn tag" href={`${siteURL}/tags/${tag.id}`}>
+            {tag.name}
+          </a>
+        ))
+      }
     </div>
   </div>
   <Grid toggle={false}>
@@ -47,5 +54,5 @@ const { tags } = await tagsResp.json();
       })
     }
   </Grid>
-  <Pagination page={1} pages={10} />
+  {pages >= 2 && <Pagination page={page} pages={pages} />}
 </Layout>

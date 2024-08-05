@@ -2,17 +2,22 @@
 import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid/Grid";
 import Figure from "@components/figure/Figure";
+import Pagination from "@components/Pagination/Pagination";
 import type { Book, Tag } from "@common/common";
 import { siteURL, serverURL } from "@common/common";
 
 interface ApiResponse {
+  page: number;
+  limit: number;
   tag: Tag;
 }
 
 const { id } = Astro.params;
 const response = await fetch(`${serverURL}/tags/${id}`);
-const { tag } = (await response.json()) as ApiResponse;
+const { page, limit, tag } = (await response.json()) as ApiResponse;
 const books = tag.books;
+const records = tag._count.books;
+const pages = Math.ceil(records / limit);
 ---
 
 <Layout>
@@ -42,4 +47,5 @@ const books = tag.books;
       })
     }
   </Grid>
+  {pages >= 2 && <Pagination page={page} pages={pages} />}
 </Layout>
