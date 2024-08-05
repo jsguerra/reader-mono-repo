@@ -3,16 +3,10 @@ import prisma from "../util/prisma";
 
 // Get all Tags
 const getAllTags = async (req: Request, res: Response) => {
-  const { query } = req;
-  const page = typeof query.page === "string" ? Number(query.page) : 1;
-  const limit = typeof query.limit === "string" ? Number(query.limit) : 10;
-
   try {
     const tags = await prisma.tag.findMany({
-      skip: (page - 1) * limit,
-      take: limit,
       orderBy: {
-        id: "desc",
+        name: "asc",
       },
     });
     res.status(200).json({ message: "displaying tags", tags: tags });
@@ -41,11 +35,20 @@ const createTag = async (req: Request, res: Response) => {
 // Get Tag
 const getTag = async (req: Request, res: Response) => {
   const { id } = req.params;
+  const { query } = req;
+  const page = typeof query.page === "string" ? Number(query.page) : 1;
+  const limit = typeof query.limit === "string" ? Number(query.limit) : 10;
+
   try {
     const tag = await prisma.tag.findUnique({
       where: { id: Number(id) },
       include: {
         books: {
+          skip: (page - 1) * limit,
+          take: limit,
+          orderBy: {
+            id: "desc",
+          },
           include: {
             author: true,
           },
