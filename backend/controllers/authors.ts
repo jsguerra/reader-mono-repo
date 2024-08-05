@@ -34,7 +34,13 @@ const getAuthor = async (req: Request, res: Response) => {
   try {
     const author = await prisma.author.findUnique({
       where: { id: Number(id) },
-      include: { books: true },
+      include: {
+        books: {
+          orderBy: {
+            title: "asc",
+          },
+        },
+      },
     });
 
     res.status(200).json({ message: "displaying author", author: author });
