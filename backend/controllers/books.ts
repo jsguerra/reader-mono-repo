@@ -5,7 +5,7 @@ import prisma from "../util/prisma";
 const getBooks = async (req: Request, res: Response) => {
   const { query } = req;
   const page = typeof query.page === "string" ? Number(query.page) : 1;
-  const limit = typeof query.limit === "string" ? Number(query.limit) : 10;
+  const limit = typeof query.limit === "string" ? Number(query.limit) : 20;
 
   if (query.q) {
     const results = await prisma.book.findMany({
@@ -24,7 +24,13 @@ const getBooks = async (req: Request, res: Response) => {
         author: true,
       },
     });
-    res.status(200).json(results);
+    const totalRecords = await prisma.book.count();
+    res.status(200).json({
+      page: page,
+      limit: limit,
+      records: totalRecords,
+      results: results,
+    });
   } else {
     const books = await prisma.book.findMany({
       skip: (page - 1) * limit,
@@ -37,7 +43,15 @@ const getBooks = async (req: Request, res: Response) => {
         author: true,
       },
     });
-    res.status(200).json(books);
+    const totalRecords = await prisma.book.count();
+    res
+      .status(200)
+      .json({
+        page: page,
+        limit: limit,
+        records: totalRecords,
+        books: books,
+      });
   }
 };
 
