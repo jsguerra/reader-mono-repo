@@ -71,9 +71,9 @@ Pages:
 - [x] Author Page
   - [ ] Add AZ filter
 - [x] Book Page
-  - [ ] Configure page pagination
+  - [x] Configure page pagination
 - [x] Tags Results Page
-  - [ ] Add results pagination
+  - [x] Add results pagination
 - [ ] Admin Page
   - [x] Author Create Page
   - [ ] Author Edit Page
@@ -83,5 +83,8 @@ Pages:
   - [ ] Tag Edit Page
 
 Optional:
-- [ ] Delete functionality for Author, Book, and Tag
-- [ ] Creal uploaded image functionality
+- [ ] Delete functionality
+  - [ ] Delete author
+  - [ ] Delete book
+  - [ ] Delete tag
+- [ ] Clear uploaded image functionality
