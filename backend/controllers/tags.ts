@@ -43,6 +43,11 @@ const getTag = async (req: Request, res: Response) => {
     const tag = await prisma.tag.findUnique({
       where: { id: Number(id) },
       include: {
+        _count: {
+          select: {
+            books: true,
+          },
+        },
         books: {
           skip: (page - 1) * limit,
           take: limit,
@@ -56,7 +61,7 @@ const getTag = async (req: Request, res: Response) => {
       },
     });
 
-    res.status(200).json({ message: "displaying tag", tag: tag });
+    res.status(200).json({ page: page, limit: limit, tag: tag });
   } catch (error) {
     console.error(error);
   }
