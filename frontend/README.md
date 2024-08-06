@@ -48,7 +48,7 @@ These commands can be run from inside the frontend directory:
 Components:
 - [x] Pagination Component
 - [x] Scroll Up Component
-- [ ] AZ Filter Component
+- [x] AZ Filter Component
 - [ ] Forms
   - [x] Author Form Component
   - [ ] Author Edit Form Component
@@ -69,7 +69,7 @@ Pages:
 - [x] Search Results Page
   - [ ] Search Pagination
 - [x] Author Page
-  - [ ] Add AZ filter
+  - [x] Add AZ filter
 - [x] Book Page
   - [x] Configure page pagination
 - [x] Tags Results Page
