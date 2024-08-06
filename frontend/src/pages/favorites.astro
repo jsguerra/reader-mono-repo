@@ -7,7 +7,6 @@ import { siteURL, serverURL } from "@common/common";
 
 const response = await fetch(`${serverURL}/favorites`);
 const { favorites } = await response.json();
-console.log(favorites);
 ---
 
 <Layout>
