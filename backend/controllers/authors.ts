@@ -3,8 +3,22 @@ import prisma from "../util/prisma";
 
 // Get all Authors
 const getAuthors = async (req: Request, res: Response) => {
-  const authors = await prisma.author.findMany();
-  res.status(200).json(authors);
+  const { query } = req;
+  console.log(query);
+
+  if (query.letter) {
+    const authors = await prisma.author.findMany({
+      where: {
+        name: {
+          startsWith: query.letter.toString(),
+        },
+      },
+    });
+    res.status(200).json(authors);
+  } else {
+    const authors = await prisma.author.findMany({});
+    res.status(200).json(authors);
+  }
 };
 
 // Create Author
