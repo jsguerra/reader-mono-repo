@@ -7,7 +7,7 @@ import { siteURL, serverURL } from "@common/common";
 
 const q = Astro.url.searchParams.get("q") ?? undefined;
 const bookResp = await fetch(`${serverURL}/books?q=${q}`);
-const books = await bookResp.json();
+const { results } = await bookResp.json();
 ---
 
 <Layout>
@@ -16,9 +16,9 @@ const books = await bookResp.json();
     <p>Params: {q}</p>
   </div>
   <Grid>
-    {books.length <= 0 && <p>There are currently no books in the library.</p>}
+    {results.length <= 0 && <p>There are currently no books in the library.</p>}
     {
-      books.map((book: Book) => {
+      results.map((book: Book) => {
         const letterDirectory = book.author.name.charAt(0).toLowerCase();
         const firstImage = book.pages?.split(", ");
         let thumbnail = "";
