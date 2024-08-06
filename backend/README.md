@@ -33,3 +33,4 @@ Ideally uploaded files would be hosted externally, in this example uploaded file
 - [x] Add Query parameters to endpoints
 - [x] Add Favorites endpoint
 - [x] Add pagination capabilities
+- [x] Add Query parameters to authors endpoint
