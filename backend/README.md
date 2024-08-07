@@ -23,6 +23,7 @@ Accepts formData
 | `/authors:id` | GET an author, UPDATE an author, DELETE an author |
 | `/books` | GET all books, POST to create new book |
 | `/books:id` | GET a book, UPDATE a book, DELETE a book |
+| `/favorites` | GET all favorites |
 | `/tags` | GET all tags, POST to create new tag |
 | `/tags:id` | GET a tag, UPDATE a tag, DELETE a tag |
 
