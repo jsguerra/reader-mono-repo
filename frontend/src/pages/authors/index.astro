@@ -11,7 +11,6 @@ const response = await fetch(
   `${serverURL}/authors${filter !== undefined ? `?letter=${filter}` : ""}`
 );
 const authors: Author[] = await response.json();
-const rootPath = "/authors";
 ---
 
 <Layout>
@@ -20,7 +19,7 @@ const rootPath = "/authors";
       <h1>List of Authors</h1>
       <p>Total authors: {authors.length}</p>
     </div>
-    {<AZFilter rootPath={rootPath} client:load />}
+    {<AZFilter rootPath="/authors" client:load />}
   </div>
   <Grid toggle={false}>
     {
