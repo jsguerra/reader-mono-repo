@@ -1,7 +1,29 @@
 ---
 import Layout from "@layout/Layout.astro";
+import BookForm from "@components/Form/BookForm/BookForm";
+import { serverURL } from "@common/common";
+
+const { id } = Astro.params;
+const [authorResp, booksResp, tagResp] = await Promise.all([
+  fetch(`${serverURL}/authors`),
+  fetch(`${serverURL}/books/${id}`),
+  fetch(`${serverURL}/tags`),
+]);
+const authors = await authorResp.json();
+const { book } = await booksResp.json();
+const { tags } = await tagResp.json();
 ---
 
 <Layout>
-  <h1>Page Title</h1>
+  <div class="container container-variant">
+    <h1 style="text-align: center;">Add Book</h1>
+    <BookForm
+      authors={authors}
+      data={book}
+      endPoint={`${serverURL}/books/${id}`}
+      method="PUT"
+      tags={tags}
+      client:load
+    />
+  </div>
 </Layout>
