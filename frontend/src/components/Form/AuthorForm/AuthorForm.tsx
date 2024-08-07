@@ -3,11 +3,17 @@ import type { ChangeEvent, FormEvent, FC } from "react";
 import Styles from "../Form.module.css";
 
 interface FormProps {
+  data?: {
+    id: number;
+    name: string;
+    slug: string;
+    thumbnail: string;
+  };
   endPoint: string;
   method: string;
 }
 
-const AuthorForm: FC<FormProps> = ({ endPoint, method }) => {
+const AuthorForm: FC<FormProps> = ({ data, endPoint, method }) => {
   const [imagePreview, setImagePreview] = useState<
     string | ArrayBuffer | null | undefined
   >(undefined);
@@ -40,6 +46,7 @@ const AuthorForm: FC<FormProps> = ({ endPoint, method }) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     formData.append("thumbnail", thumbnail);
+
     const response = await fetch(endPoint, {
       method: method,
       body: formData,
@@ -63,6 +70,7 @@ const AuthorForm: FC<FormProps> = ({ endPoint, method }) => {
             id="name"
             name="name"
             required
+            defaultValue={data?.name}
           />
         </label>
         <label>
@@ -73,6 +81,7 @@ const AuthorForm: FC<FormProps> = ({ endPoint, method }) => {
             id="slug"
             name="slug"
             required
+            defaultValue={data?.slug}
           />
         </label>
         <label>
@@ -82,9 +91,12 @@ const AuthorForm: FC<FormProps> = ({ endPoint, method }) => {
             id="fileUpload"
             name="fileUpload"
             onChange={handleImageSelect}
+            defaultValue={data?.thumbnail}
           />
         </label>
-        <button className={`btn`}>Submit</button>
+        <button className={`btn`}>
+          {data ? "Update Author" : "Add Author"}
+        </button>
         {responseMessage && <p>{responseMessage}</p>}
       </form>
       {imagePreview ? (
