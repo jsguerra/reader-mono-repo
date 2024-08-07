@@ -104,7 +104,15 @@ const getBook = async (req: Request, res: Response) => {
 // Update Book
 const updateBook = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { title, slug, pages, favorite, tags, authorId } = req.body;
+  const { title, slug, pages, favorite, tags, author } = req.body;
+  const authorValue = author.split(":");
+  const authorId = Number(authorValue[1]);
+  const favBoolean = favorite === "on" ? true : false;
+  const tagIds = tags.map((tag: string) => {
+    const id = tag;
+    return { id: Number(id) };
+  });
+
   try {
     const book = await prisma.book.update({
       where: {
@@ -114,8 +122,10 @@ const updateBook = async (req: Request, res: Response) => {
         title,
         slug,
         pages,
-        favorite,
-        tags,
+        favorite: favBoolean,
+        tags: {
+          connect: tagIds,
+        },
         authorId,
       },
     });
