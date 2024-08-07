@@ -3,11 +3,16 @@ import type { FormEvent, FC } from "react";
 import Styles from "./TagForm.module.css";
 
 interface FormProps {
+  data?: {
+    id: number;
+    name: string;
+    slug: string;
+  };
   endPoint: string;
   method: string;
 }
 
-const TagForm: FC<FormProps> = ({ endPoint, method }) => {
+const TagForm: FC<FormProps> = ({ data, endPoint, method }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const ref = useRef<HTMLFormElement>(null);
 
@@ -36,6 +41,7 @@ const TagForm: FC<FormProps> = ({ endPoint, method }) => {
           id="name"
           name="name"
           required
+          defaultValue={data?.name}
         />
       </label>
       <label>
@@ -47,9 +53,10 @@ const TagForm: FC<FormProps> = ({ endPoint, method }) => {
           id="slug"
           name="slug"
           required
+          defaultValue={data?.slug}
         />
       </label>
-      <button className="btn">Send</button>
+      <button className="btn">{data ? "Update Tag" : "Add Tag"}</button>
       {responseMessage && <p>{responseMessage}</p>}
     </form>
   );
