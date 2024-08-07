@@ -4,7 +4,6 @@ import prisma from "../util/prisma";
 // Get all Authors
 const getAuthors = async (req: Request, res: Response) => {
   const { query } = req;
-  console.log(query);
 
   if (query.letter) {
     const authors = await prisma.author.findMany({
