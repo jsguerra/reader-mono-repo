@@ -65,6 +65,7 @@ const createBook = async (req: Request, res: Response) => {
     const id = tag;
     return { id: Number(id) };
   });
+
   try {
     const book = await prisma.book.create({
       data: {
