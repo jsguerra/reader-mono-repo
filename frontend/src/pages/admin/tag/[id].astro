@@ -1,7 +1,23 @@
 ---
 import Layout from "@layout/Layout.astro";
+import TagForm from "@components/Form/TagForm/TagForm";
+import type { Tag } from "@common/common";
+import { serverURL } from "@common/common";
+
+interface ApiResponse {
+  page: number;
+  limit: number;
+  tag: Tag;
+}
+
+const { id } = Astro.params;
+const response = await fetch(`${serverURL}/tags/${id}`);
+const tag = (await response.json()) as ApiResponse;
 ---
 
 <Layout>
-  <h1>Page Title</h1>
+  <div class="container container-variant">
+    <h1>Edit Tag: {tag.tag.name}</h1>
+    <TagForm data={tag.tag} method="PUT" endPoint={`${serverURL}/tags/${id}`} client:load />
+  </div>
 </Layout>
