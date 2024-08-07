@@ -1,7 +1,17 @@
 ---
 import Layout from "@layout/Layout.astro";
+import AuthorForm from "@components/Form/AuthorForm/AuthorForm";
+import { serverURL } from "@common/common";
+
+const { id } = Astro.params;
+const response = await fetch(`${serverURL}/authors/${id}`);
+const author = await response.json();
+console.log(author);
 ---
 
 <Layout>
-  <h1>Page Title</h1>
+  <div class="container container-variant">
+    <h1 style="text-align: center;">Edit Author: {author.author.name}</h1>
+    <AuthorForm data={author.author} endPoint={`${serverURL}/authors/${id}`} method="PUT" client:load />
+  </div>
 </Layout>
