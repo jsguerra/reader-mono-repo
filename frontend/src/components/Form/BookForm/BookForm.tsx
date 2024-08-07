@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import type { ChangeEvent, FormEvent, FC } from "react";
 import Styles from "./BookForm.module.css";
 
@@ -19,16 +19,42 @@ interface TagType {
 
 type FormProps = {
   authors: AuthorType[];
-  tags: TagType[];
+  data?: {
+    id: number;
+    title: string;
+    slug: string;
+    pages?: string;
+    favorite: boolean;
+    tags: TagType[];
+    author: AuthorType;
+  };
   endPoint: string;
   method: string;
+  tags: TagType[];
 };
 
-const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
+const BookForm: FC<FormProps> = ({ authors, data, endPoint, method, tags }) => {
   const [responseMessage, setResponseMessage] = useState("");
   const ref = useRef<HTMLFormElement>(null);
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
-  const [pageCollection, setPageCollection] = useState("");
+  const [pageCollection, setPageCollection] = useState(data?.pages);
+  const [selectedAuthor, setSelectedAuthor] = useState<string>("");
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (data) {
+      // Set default author
+      if (data.author) {
+        setSelectedAuthor(`${data.author.name}:${data.author.id}`);
+      }
+      // Set selected tags
+      if (data.tags) {
+        setSelectedTags(data.tags.map((tag) => tag.id));
+      }
+      // Set favorite
+      setIsFavorite(data.favorite === true);
+    }
+  }, [data]);
 
   const handleFiles = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -56,6 +82,10 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
     });
   };
 
+  const handleAuthorChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedAuthor(event.target.value);
+  };
+
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -80,6 +110,7 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
           name="title"
           placeholder="Title"
           required
+          defaultValue={data?.title}
         />
         <input
           autoComplete="off"
@@ -88,6 +119,7 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
           name="slug"
           placeholder="Slug"
           required
+          defaultValue={data?.slug}
         />
         <input
           autoComplete="off"
@@ -98,7 +130,12 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
           value={pageCollection}
           onChange={() => console.log(pageCollection)}
         />
-        <select name="author" id="author">
+        <select
+          name="author"
+          id="author"
+          value={selectedAuthor}
+          onChange={handleAuthorChange}
+        >
           <option value="">--Please choose an author--</option>
           {authors &&
             authors.map((author) => (
@@ -108,7 +145,12 @@ const BookForm: FC<FormProps> = ({ authors, endPoint, method, tags }) => {
             ))}
         </select>
         <label className={Styles.favorite} htmlFor="favorite">
-          <input id="favorite" name="favorite" type="checkbox" />{" "}
+          <input
+            id="favorite"
+            name="favorite"
+            type="checkbox"
+            defaultChecked={isFavorite}
+          />{" "}
           <span>Favorite</span>
         </label>
         {tags.length > 0 && (
