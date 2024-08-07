@@ -19,8 +19,15 @@ const pages = book.pages?.split(", ");
 <Layout>
   <div class="container container-variant">
     <h1>{book.title}</h1>
-    <p>Author: {book.author.name}</p>
-    <p>Number of pages: {pages?.length}</p>
+    <a class="btn" href={`${siteURL}/admin/book/${id}`}>Edit Book</a>
+    <div style="display: flex; justify-content: space-between; width: 100%">
+      <p>
+        Author: <a href={`${siteURL}/authors/${book.author.id}`}
+          >{book.author.name}</a>
+      </p>
+      <p>Number of pages: {pages?.length}</p>
+    </div>
+
     <div class="tag-container">
       {
         book.tags.map((tag: Tag) => (
@@ -33,15 +40,17 @@ const pages = book.pages?.split(", ");
   </div>
   <Grid toggle={true} client:load>
     {
-      pages && pages.map((page) => { 
-        const letterDirectory = book.author.name.charAt(0).toLowerCase();
+      pages &&
+        pages.map((page) => {
+          const letterDirectory = book.author.name.charAt(0).toLowerCase();
 
-        return (
-        <Figure
-          imageUrl={`${serverURL}/books/${letterDirectory}/${book.author.slug}/${book.slug}/${page}`}
-          title={page}
-        />
-      )})
+          return (
+            <Figure
+              imageUrl={`${serverURL}/books/${letterDirectory}/${book.author.slug}/${book.slug}/${page}`}
+              title={page}
+            />
+          );
+        })
     }
   </Grid>
   <ScrollBtn client:load />
