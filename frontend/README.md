@@ -51,11 +51,11 @@ Components:
 - [x] AZ Filter Component
 - [ ] Forms
   - [x] Author Form Component
-  - [ ] Author Edit Form Component
+  - [x] Author Edit Form Component
   - [x] Book Form Component
   - [ ] Book Edit Form Component
   - [x] Tag Form Component
-  - [ ] Tag Edit Form Component
+  - [x] Tag Edit Form Component
   - [x] Search Form Component
 
 Functionality:
@@ -76,11 +76,11 @@ Pages:
   - [x] Add results pagination
 - [ ] Admin Page
   - [x] Author Create Page
-  - [ ] Author Edit Page
+  - [x] Author Edit Page
   - [x] Book Create Page
   - [ ] Book Edit Page
   - [x] Tag Create Page
-  - [ ] Tag Edit Page
+  - [x] Tag Edit Page
 
 Optional:
 - [ ] Delete functionality
@@ -88,3 +88,6 @@ Optional:
   - [ ] Delete book
   - [ ] Delete tag
 - [ ] Clear uploaded image functionality
+
+Bugs:
+- [ ] Creating a book and selecting only 1 tag sets the tags property as a string instead of an array of strings, this crashes the backend server
