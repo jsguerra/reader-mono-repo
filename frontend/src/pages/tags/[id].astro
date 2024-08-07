@@ -23,6 +23,7 @@ const pages = Math.ceil(records / limit);
 <Layout>
   <div class="container container-variant">
     <h1>Tag: {tag.name}</h1>
+    <a class="btn" href={`${siteURL}/admin/tag/${id}`}>Edit Tag</a>
     <p>Total books: {tag.books.length}</p>
   </div>
   <Grid books={books} client:load>
