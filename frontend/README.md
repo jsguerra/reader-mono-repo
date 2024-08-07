@@ -49,11 +49,11 @@ Components:
 - [x] Pagination Component
 - [x] Scroll Up Component
 - [x] AZ Filter Component
-- [ ] Forms
+- [x] Forms
   - [x] Author Form Component
   - [x] Author Edit Form Component
   - [x] Book Form Component
-  - [ ] Book Edit Form Component
+  - [x] Book Edit Form Component
   - [x] Tag Form Component
   - [x] Tag Edit Form Component
   - [x] Search Form Component
@@ -74,11 +74,11 @@ Pages:
   - [x] Configure page pagination
 - [x] Tags Results Page
   - [x] Add results pagination
-- [ ] Admin Page
+- [x] Admin Page
   - [x] Author Create Page
   - [x] Author Edit Page
   - [x] Book Create Page
-  - [ ] Book Edit Page
+  - [x] Book Edit Page
   - [x] Tag Create Page
   - [x] Tag Edit Page
 
