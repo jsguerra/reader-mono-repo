@@ -7,7 +7,12 @@
   "description": "",
   "scripts": {
     "dev-back": "npm run dev --workspace=backend",
-    "dev-front": "npm run dev --workspace=frontend"
+    "dev-front": "npm run dev --workspace=frontend",
+    "start-back": "npm run start --workspace=backend",
+    "start-front": "npm run start --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "preview": "npm run preview --workspace=frontend",
+    "astro": "npm run astro --workspace=frontend"
   },
   "workspaces": [
     "backend",
