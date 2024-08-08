@@ -1,6 +1,7 @@
 ---
 import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid/Grid";
+import DeleteButton from "@components/Form/DeleteButton/DeleteButton";
 import Figure from "@components/figure/Figure";
 import ScrollBtn from "@components/ScrollBtn/ScrollBtn";
 import type { Book, Tag } from "@common/common";
@@ -19,11 +20,16 @@ const pages = book.pages?.split(", ");
 <Layout>
   <div class="container container-variant">
     <h1>{book.title}</h1>
-    <a class="btn" href={`${siteURL}/admin/book/${id}`}>Edit Book</a>
+    <div style="display: flex; gap: 10px;">
+      <a class="btn" href={`${siteURL}/admin/book/${id}`}>Edit Book</a>
+      <DeleteButton endPoint={`${serverURL}/books/${id}`} client:load />
+    </div>
     <div style="display: flex; justify-content: space-between; width: 100%">
       <p>
-        Author: <a href={`${siteURL}/authors/${book.author.id}`}
-          >{book.author.name}</a>
+        Author: <a
+          style="text-decoration: underline;"
+          href={`${siteURL}/authors/${book.author.id}`}>{book.author.name}</a
+        >
       </p>
       <p>Number of pages: {pages?.length}</p>
     </div>

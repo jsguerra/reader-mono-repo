@@ -2,6 +2,7 @@
 import Layout from "@layout/Layout.astro";
 import Grid from "@components/Grid/Grid";
 import Figure from "@components/figure/Figure";
+import DeleteButton from "@components/Form/DeleteButton/DeleteButton";
 import type { Author } from "@common/common";
 import { siteURL, serverURL } from "@common/common";
 
@@ -19,7 +20,12 @@ const { books } = author;
 <Layout>
   <div class="container container-variant">
     <h1>Author: {author.name}</h1>
-    <a class="btn" href={`${siteURL}/admin/author/${author.id}`}>Edit Author</a>
+    <div style="display: flex; gap: 10px;">
+      <a class="btn" href={`${siteURL}/admin/author/${author.id}`}
+        >Edit Author</a
+      >
+      <DeleteButton endPoint={`${serverURL}/authors/${id}`} client:load />
+    </div>
     <p>Total number of books: {author.books.length}</p>
   </div>
   <Grid toggle={false}>
