@@ -35,8 +35,8 @@ const AZFilter: React.FC<AZFilterProps> = ({ rootPath }) => {
     "Z",
   ];
 
-  const buttons = letters.map((letter) => (
-    <a className="btn" href={`${rootPath}/?letter=${letter}`}>
+  const buttons = letters.map((letter, i) => (
+    <a key={i + 1} className="btn" href={`${rootPath}/?letter=${letter}`}>
       {letter}
     </a>
   ));
