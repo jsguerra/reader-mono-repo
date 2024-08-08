@@ -83,11 +83,12 @@ Pages:
   - [x] Tag Edit Page
 
 Optional:
-- [ ] Delete functionality
-  - [ ] Delete author
-  - [ ] Delete book
-  - [ ] Delete tag
+- [x] Delete functionality
+  - [x] Delete author
+  - [x] Delete book
+  - [x] Delete tag
 - [ ] Clear uploaded image functionality
 
 Bugs:
 - [ ] Creating a book and selecting only 1 tag sets the tags property as a string instead of an array of strings, this crashes the backend server
+- [ ] Going to a page id that does not exist crashes the page instead of going to 404
