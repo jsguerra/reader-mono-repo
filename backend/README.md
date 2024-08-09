@@ -14,6 +14,29 @@ A backend server written in TypeScript and using module imports for an example L
 | `dev` | Start in development mode |
 | `start` | Start in production mode |
 
+Deploys to **localhost** and **port 8080**. [http://localhost:8080](http://localhost:8080)
+
+## Prisma Commands
+Initial migration:
+```bash
+npx prisma migrate dev --name init
+```
+
+To update the schema:
+```bash
+npx prisma generate
+```
+
+After updating run the following command:
+```bash
+npx prisma migrate dev
+```
+
+To Launch interactive database UI:
+```bash
+npx prisma studio
+```
+
 ## Endpoints
 Accepts formData
 
