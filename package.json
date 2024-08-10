@@ -6,10 +6,10 @@
   "license": "ISC",
   "description": "",
   "scripts": {
-    "dev-back": "npm run dev --workspace=backend",
-    "dev-front": "npm run dev --workspace=frontend",
-    "start-back": "npm run start --workspace=backend",
-    "start-front": "npm run start --workspace=frontend",
+    "dev:server": "npm run dev --workspace=backend",
+    "dev:client": "npm run dev --workspace=frontend",
+    "start:server": "npm run start --workspace=backend",
+    "start:client": "npm run start --workspace=frontend",
     "build": "npm run build --workspace=frontend",
     "preview": "npm run preview --workspace=frontend",
     "astro": "npm run astro --workspace=frontend"
