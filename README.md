@@ -33,10 +33,10 @@ The following scripts can be run from the root directory:
 
 | Command | Description |
 | ------- | ----------- |
-| `dev-back` | Start backend server in development mode |
-| `dev-front` | Start frontend in development mode |
-| `start-back` | Start backend in production mode |
-| `start-front` | Start frontend in development mode |
+| `dev:server` | Start backend server in development mode |
+| `dev:client` | Start frontend in development mode |
+| `start:server` | Start backend in production mode |
+| `start:client` | Start frontend in development mode |
 | `build` | builds frontend site for deployment |
 | `preview` | Starts a production server to display deployment build |
 | `astro` |  |
